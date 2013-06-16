@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GeoQuiz</string>
+    <string name="question_text">Does San Diego have great weather?</string>
+    <string name="true_button">True that!</string>
+    <string name="false_button">Heck No!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="correct">Yeah! you got it!</string>
+    <string name="incorrect">Hahaha! you lose!</string>
+
+</resources>
