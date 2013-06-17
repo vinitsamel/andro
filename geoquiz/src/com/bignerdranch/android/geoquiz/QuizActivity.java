@@ -5,12 +5,24 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class QuizActivity extends Activity {
 	
 	private Button mTrueButton;
 	private Button mFalseButton;
+	private Button mNextButton;
+	private TextView mQTextView;
+	
+	private TrueFalse[] mQuestionBank = new TrueFalse[] {
+			new TrueFalse(R.string.q_2, false),
+			new TrueFalse(R.string.q_Google, true),
+			new TrueFalse(R.string.q_SD, true),
+			new TrueFalse(R.string.q_Sky, false)
+	};
+	
+	private int mCurrentIndex = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +34,10 @@ public class QuizActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();	
+				if (mQuestionBank[mCurrentIndex].isTrueQuestion())
+					Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();	
+				else
+					Toast.makeText(QuizActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
 			}
 		});
 		
@@ -31,7 +46,24 @@ public class QuizActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(QuizActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
+				if (!mQuestionBank[mCurrentIndex].isTrueQuestion())
+					Toast.makeText(QuizActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();	
+				else
+					Toast.makeText(QuizActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
+			}
+		});
+		
+		mQTextView = (TextView) findViewById(R.id.question_text_view);
+		updateQuestion();
+		
+		mNextButton = (Button) findViewById(R.id.next_button);
+		mNextButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				mCurrentIndex++;
+				if (mCurrentIndex + 1 > mQuestionBank.length) mCurrentIndex = 0;
+				updateQuestion();
 			}
 		});
 	}
@@ -41,6 +73,11 @@ public class QuizActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_quiz, menu);
 		return true;
+	}
+	
+	private void updateQuestion() {
+		int questionId = mQuestionBank[mCurrentIndex].getQuestion();
+		mQTextView.setText(questionId);	
 	}
 
 }

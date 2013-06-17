@@ -2,11 +2,15 @@
 <resources>
 
     <string name="app_name">GeoQuiz</string>
-    <string name="question_text">Does San Diego have great weather?</string>
     <string name="true_button">True that!</string>
     <string name="false_button">Heck No!</string>
+    <string name="next_button">Next Q</string>
     <string name="menu_settings">Settings</string>
     <string name="correct">Yeah! you got it!</string>
     <string name="incorrect">Hahaha! you lose!</string>
+    <string name="q_SD">Does San Diego have great weather?</string>
+    <string name="q_Google">Is Google the Best Search Engine?</string>
+    <string name="q_Sky">Is the Sky Pink in color?</string>
+    <string name="q_2">1+2=12 ?</string>
 
 </resources>
