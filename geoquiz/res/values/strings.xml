@@ -12,5 +12,9 @@
     <string name="q_Google">Is Google the Best Search Engine?</string>
     <string name="q_Sky">Is the Sky Pink in color?</string>
     <string name="q_2">1+2=12 ?</string>
+    <string name="cheat_button">I\'m gonna Cheat :|</string>
+    <string name="warning_text">Dude? Why are you Cheating!</string>
+    <string name="show_answer_button">Show Answer</string>
+    <string name="judgement_toast">Bad doggy! You cheated!</string>
 
 </resources>

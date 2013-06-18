@@ -1,6 +1,7 @@
 package com.bignerdranch.android.geoquiz;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,9 +15,11 @@ public class QuizActivity extends Activity {
 	private Button mTrueButton;
 	private Button mFalseButton;
 	private Button mNextButton;
+	private Button mCheatButton;
 	private TextView mQTextView;
 	private static final String TAG = "QuizActivity";
 	private static final String CURRENTINDEX = "CurrentIndex";
+	public static final String EXTRA_ANSWER_IS_TRUE = "com.bignerdranch.android.geoquiz.answer_is_true";
 	
 	private TrueFalse[] mQuestionBank = new TrueFalse[] {
 			new TrueFalse(R.string.q_2, false),
@@ -72,6 +75,18 @@ public class QuizActivity extends Activity {
 				updateQuestion();
 			}
 		});
+		
+		mCheatButton = (Button) findViewById(R.id.cheat_button);
+		mCheatButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(QuizActivity.this, CheatActivity.class);
+				boolean isAnswerTrue = mQuestionBank[mCurrentIndex].isTrueQuestion();
+				i.putExtra(EXTRA_ANSWER_IS_TRUE, isAnswerTrue);
+				startActivityForResult(i, 0);
+			}
+		});
 	}
 
 	@Override
@@ -121,6 +136,14 @@ public class QuizActivity extends Activity {
 		super.onSaveInstanceState(savedInstanceState);
 		Log.d(TAG, "onSaveInstanceState with (K,V) = (" + CURRENTINDEX + ", " + mCurrentIndex + ")");
 		savedInstanceState.putInt(CURRENTINDEX, mCurrentIndex);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (data != null) {
+			boolean isCheater = data.getBooleanExtra(CheatActivity.EXTRA_ANSWER_SHOWN, false);
+			if (isCheater) Toast.makeText(QuizActivity.this, R.string.judgement_toast, Toast.LENGTH_SHORT).show();	
+		}
 	}
 
 }
