@@ -2,6 +2,7 @@ package com.bignerdranch.android.geoquiz;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -17,6 +18,7 @@ public class QuizActivity extends Activity {
 	private Button mNextButton;
 	private Button mCheatButton;
 	private TextView mQTextView;
+	private TextView mBVTextView;
 	private static final String TAG = "QuizActivity";
 	private static final String CURRENTINDEX = "CurrentIndex";
 	public static final String EXTRA_ANSWER_IS_TRUE = "com.bignerdranch.android.geoquiz.answer_is_true";
@@ -87,6 +89,9 @@ public class QuizActivity extends Activity {
 				startActivityForResult(i, 0);
 			}
 		});
+		
+		mBVTextView = (TextView) findViewById(R.id.build_version_text_view);
+		mBVTextView.setText(Build.VERSION.RELEASE);
 	}
 
 	@Override
