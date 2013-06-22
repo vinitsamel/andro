@@ -35,12 +35,17 @@ public class Crime {
 		mDate = date;
 	}
 
-	public boolean isIsSolved() {
+	public boolean isSolved() {
 		return mIsSolved;
 	}
 
 	public void setIsSolved(boolean isSolved) {
 		mIsSolved = isSolved;
+	}
+	
+	@Override
+	public String toString() {
+		return mTitle;
 	}
 	
 }

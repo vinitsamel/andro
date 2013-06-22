@@ -16,6 +16,7 @@ public class CrimeLab {
 		// Statically generated crimes 
 		for (int i = 0; i < 100; i++) {
 			Crime c = new Crime();
+			c.setTitle("Crime #" + i);
 			c.setIsSolved(i % 2 == 0);
 			mCrimes.add(c);
 		}
