@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">JabWeMet</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="jwm_play">Play</string>
+    <string name="jwm_stop">Stop</string>
+    <string name="jwm_desc">Tum se Hi from Jab We Met</string>
+
+</resources>
