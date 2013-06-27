@@ -13,6 +13,12 @@ public class JWMFragment extends Fragment {
 	private AudioPlayer aPlayer = new AudioPlayer();
 	
 	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setRetainInstance(true);
+	}
+	
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_jwm, null, false);
 		

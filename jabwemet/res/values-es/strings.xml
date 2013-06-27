@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">JabWeMet_in_Mexico</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settingo</string>
+    <string name="jwm_play">Playaa</string>
+    <string name="jwm_stop">Staap</string>
+    <string name="jwm_desc">Tum se Hi from Jab We Met in Mexico</string>
+
+</resources>
