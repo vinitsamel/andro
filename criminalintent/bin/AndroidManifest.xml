@@ -21,7 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.bignerdranch.android.criminalintent.CrimePagerActivity"/>
+        <activity android:name="com.bignerdranch.android.criminalintent.CrimePagerActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CrimeListActivity"/>
+        </activity>
     </application>
 
 </manifest>

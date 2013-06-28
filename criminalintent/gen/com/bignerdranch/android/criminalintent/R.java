@@ -21,7 +21,10 @@ public final class R {
         public static final int crime_solved=0x7f040005;
         public static final int crime_title=0x7f040003;
         public static final int dialog_date_picker=0x7f040002;
+        public static final int empty_vw=0x7f04000a;
         public static final int fragmentContainer=0x7f040001;
+        public static final int list_vw=0x7f040009;
+        public static final int menu_item_new_crime=0x7f04000b;
         public static final int viewPager=0x7f040000;
     }
     public static final class layout {
@@ -29,6 +32,10 @@ public final class R {
         public static final int dialog_date=0x7f030001;
         public static final int fragment_crime=0x7f030002;
         public static final int list_item_crime=0x7f030003;
+        public static final int listfragment_no_crime=0x7f030004;
+    }
+    public static final class menu {
+        public static final int fragment_crime_list=0x7f070000;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
@@ -38,6 +45,12 @@ public final class R {
         public static final int crime_title_label=0x7f050002;
         public static final int crimes_title=0x7f050005;
         public static final int date_picker_title=0x7f050006;
+        public static final int delete_crime=0x7f05000b;
+        public static final int hide_subtitle=0x7f050009;
+        public static final int new_crime=0x7f050007;
+        public static final int no_crimes=0x7f05000c;
+        public static final int show_subtitle=0x7f050008;
+        public static final int subtitle=0x7f05000a;
     }
     public static final class style {
         /** 
