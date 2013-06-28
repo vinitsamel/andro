@@ -12,8 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,13 +30,26 @@ public class CrimeListFragment extends ListFragment {
 		mCrimes = CrimeLab.getInstance(getActivity()).getCrimes();
 		CrimeAdapter adapter = new CrimeAdapter(mCrimes);
 		setListAdapter(adapter);
-
 	}
 	
-//	@Override
-//	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-//		return getListView().setEmptyView(getListView().findViewById(R.id.empty_vw));
-//	}
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+		View v = (View) inflater.inflate(R.layout.listfragment_no_crime, parent, false);
+		
+		ListView lv = (ListView) v.findViewById(android.R.id.list);
+		lv.setEmptyView(v.findViewById(android.R.id.empty));
+		
+		Button newCrimeButton = (Button) v.findViewById(R.id.addButton);
+		newCrimeButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				reportNewCrimeAction();
+			}
+		});
+		
+		return v;
+	}
 	
 	
 	
@@ -95,15 +108,19 @@ public class CrimeListFragment extends ListFragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_item_new_crime:
-			Crime cr = new Crime();
-			CrimeLab.getInstance(getActivity()).addCrime(cr);
-			Intent intent = new Intent(getActivity(), CrimePagerActivity.class);
-			intent.putExtra(CrimeFragment.EXTRA_CRIME_ID, cr.getId());
-			startActivityForResult(intent, 0);
+			reportNewCrimeAction();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+	
+	private void reportNewCrimeAction() {
+		Crime cr = new Crime();
+		CrimeLab.getInstance(getActivity()).addCrime(cr);
+		Intent intent = new Intent(getActivity(), CrimePagerActivity.class);
+		intent.putExtra(CrimeFragment.EXTRA_CRIME_ID, cr.getId());
+		startActivityForResult(intent, 0);
 	}
 
 }

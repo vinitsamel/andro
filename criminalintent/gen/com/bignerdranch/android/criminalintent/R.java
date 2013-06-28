@@ -14,6 +14,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
+        public static final int addButton=0x7f040009;
         public static final int crime_date=0x7f040004;
         public static final int crime_list_item_dateTextView=0x7f040008;
         public static final int crime_list_item_solvedCheckBox=0x7f040006;
@@ -21,10 +22,8 @@ public final class R {
         public static final int crime_solved=0x7f040005;
         public static final int crime_title=0x7f040003;
         public static final int dialog_date_picker=0x7f040002;
-        public static final int empty_vw=0x7f04000a;
         public static final int fragmentContainer=0x7f040001;
-        public static final int list_vw=0x7f040009;
-        public static final int menu_item_new_crime=0x7f04000b;
+        public static final int menu_item_new_crime=0x7f04000a;
         public static final int viewPager=0x7f040000;
     }
     public static final class layout {
