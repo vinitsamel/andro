@@ -2,10 +2,13 @@ package com.bignerdranch.android.criminalintent;
 
 import java.util.ArrayList;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
@@ -14,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView.MultiChoiceModeListener;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -35,6 +39,7 @@ public class CrimeListFragment extends ListFragment {
 		setListAdapter(adapter);
 	}
 	
+	@TargetApi(11)
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 		View v = (View) inflater.inflate(R.layout.listfragment_no_crime, parent, false);
@@ -51,7 +56,60 @@ public class CrimeListFragment extends ListFragment {
 			}
 		});
 		
-		registerForContextMenu(lv);
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+			registerForContextMenu(lv);
+		}
+		else {
+			lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+			lv.setMultiChoiceModeListener(new MultiChoiceModeListener() {
+				
+				@Override
+				public boolean onPrepareActionMode(ActionMode arg0, Menu arg1) {
+					// TODO Auto-generated method stub
+					return false;
+				}
+				
+				@Override
+				public void onDestroyActionMode(ActionMode arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public boolean onCreateActionMode(ActionMode arg0, Menu menu) {
+					MenuInflater mInf = arg0.getMenuInflater();
+					mInf.inflate(R.menu.crime_list_context, menu);
+					return true;
+				}
+				
+				@Override
+				public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+					switch (item.getItemId()) {
+						case R.id.menu_item_delete_drime: 
+							CrimeAdapter cAdp = (CrimeAdapter) getListAdapter();
+							for (int i = 0; i < cAdp.getCount(); ++i) {
+								if (getListView().isItemChecked(i)) {
+									CrimeLab.getInstance(getActivity()).deleteCrime(cAdp.getItem(i));
+								}
+							}
+							mode.finish();
+							cAdp.notifyDataSetChanged();
+							return true;
+						default:
+							return false;
+					}
+				}
+				
+				@Override
+				public void onItemCheckedStateChanged(ActionMode arg0, int arg1, long arg2,
+						boolean arg3) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+			
+			
+		}
 		
 		return v;
 	}
