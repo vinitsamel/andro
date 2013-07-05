@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -47,6 +50,8 @@ public class CrimeListFragment extends ListFragment {
 				reportNewCrimeAction();
 			}
 		});
+		
+		registerForContextMenu(lv);
 		
 		return v;
 	}
@@ -121,6 +126,28 @@ public class CrimeListFragment extends ListFragment {
 		Intent intent = new Intent(getActivity(), CrimePagerActivity.class);
 		intent.putExtra(CrimeFragment.EXTRA_CRIME_ID, cr.getId());
 		startActivityForResult(intent, 0);
+	}
+	
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+		getActivity().getMenuInflater().inflate(R.menu.crime_list_context, menu);
+	}
+	
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+		int position = info.position;
+		CrimeAdapter adapter = (CrimeAdapter) getListAdapter();
+		Crime crime = adapter.getItem(position);
+		
+		switch (item.getItemId()) {
+		case R.id.menu_item_delete_drime:
+			CrimeLab.getInstance(getActivity()).deleteCrime(crime);
+			adapter.notifyDataSetChanged();
+			return true;
+		}
+		
+		return super.onContextItemSelected(item);
 	}
 
 }
