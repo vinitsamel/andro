@@ -6,6 +6,7 @@ import java.util.UUID;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,12 +18,14 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 public class CrimeFragment extends Fragment {
 	private Crime mCrime;
@@ -32,6 +35,7 @@ public class CrimeFragment extends Fragment {
 	public static final String EXTRA_CRIME_ID = "com.bignerdranch.android.crimeintent.crime_id";
 	private static final String DIALOG_DATE = "date";
 	private static final int DATE_REQ_CODE = 0;
+	private ImageButton mPhotoButton;
 	
 
 	@Override
@@ -109,6 +113,22 @@ public class CrimeFragment extends Fragment {
 				mCrime.setIsSolved(isChecked);
 			}
 		});
+		
+		mPhotoButton = (ImageButton) view.findViewById(R.id.crime_imageButton);
+		mPhotoButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getActivity(), CrimeCameraActivity.class);
+				startActivity(i);
+				
+			}
+		});
+		
+		PackageManager pm = getActivity().getPackageManager();
+		if ((!pm.hasSystemFeature(PackageManager.FEATURE_CAMERA)) && (!pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT))) {
+			mPhotoButton.setEnabled(false);
+		}
 		
 		return view;
 	}
