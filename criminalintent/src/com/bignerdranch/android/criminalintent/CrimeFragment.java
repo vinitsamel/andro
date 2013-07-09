@@ -15,6 +15,7 @@ import android.support.v4.app.NavUtils;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,8 +36,10 @@ public class CrimeFragment extends Fragment {
 	public static final String EXTRA_CRIME_ID = "com.bignerdranch.android.crimeintent.crime_id";
 	private static final String DIALOG_DATE = "date";
 	private static final int DATE_REQ_CODE = 0;
+	private static final int PHOTO_REQ_CODE = 1;
 	private ImageButton mPhotoButton;
 	
+	private static final String TAG = "CrimeFragment";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -120,7 +123,7 @@ public class CrimeFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(getActivity(), CrimeCameraActivity.class);
-				startActivity(i);
+				startActivityForResult(i, PHOTO_REQ_CODE);
 				
 			}
 		});
@@ -141,6 +144,10 @@ public class CrimeFragment extends Fragment {
 			Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
 			mCrime.setDate(date);
 			mDateButton.setText(mCrime.getDate().toString());
+		}
+		else if (reqCode == PHOTO_REQ_CODE) {
+			String fileName = data.getStringExtra(CrimeCameraFragment.EXTRA_PHOTO_FILENAME);
+			if (fileName != null) Log.i(TAG, "Received filename: " + fileName);
 		}
 	}
 	
