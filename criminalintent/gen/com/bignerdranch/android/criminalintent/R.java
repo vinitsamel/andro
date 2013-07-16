@@ -15,30 +15,36 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int addButton=0x7f04000d;
-        public static final int crime_camera_progressContainer=0x7f040009;
-        public static final int crime_camera_snapButton=0x7f040008;
-        public static final int crime_camera_surfaceView=0x7f040007;
-        public static final int crime_date=0x7f040005;
-        public static final int crime_imageButton=0x7f040003;
-        public static final int crime_list_item_dateTextView=0x7f04000c;
-        public static final int crime_list_item_solvedCheckBox=0x7f04000a;
-        public static final int crime_list_item_titleTextView=0x7f04000b;
-        public static final int crime_solved=0x7f040006;
-        public static final int crime_title=0x7f040004;
-        public static final int dialog_date_picker=0x7f040002;
+        public static final int addButton=0x7f040011;
+        public static final int crime_camera_progressContainer=0x7f04000d;
+        public static final int crime_camera_snapButton=0x7f04000c;
+        public static final int crime_camera_surfaceView=0x7f04000b;
+        public static final int crime_date=0x7f040007;
+        public static final int crime_imageButton=0x7f040004;
+        public static final int crime_imageView=0x7f040005;
+        public static final int crime_list_item_dateTextView=0x7f040010;
+        public static final int crime_list_item_solvedCheckBox=0x7f04000e;
+        public static final int crime_list_item_titleTextView=0x7f04000f;
+        public static final int crime_reportButton=0x7f04000a;
+        public static final int crime_solved=0x7f040008;
+        public static final int crime_suspectButton=0x7f040009;
+        public static final int crime_title=0x7f040006;
+        public static final int detailFragmentContainer=0x7f040002;
+        public static final int dialog_date_picker=0x7f040003;
         public static final int fragmentContainer=0x7f040001;
-        public static final int menu_item_delete_drime=0x7f04000e;
-        public static final int menu_item_new_crime=0x7f04000f;
+        public static final int menu_item_delete_drime=0x7f040012;
+        public static final int menu_item_new_crime=0x7f040013;
         public static final int viewPager=0x7f040000;
     }
     public static final class layout {
         public static final int activity_fragment=0x7f030000;
-        public static final int dialog_date=0x7f030001;
-        public static final int fragment_crime=0x7f030002;
-        public static final int fragment_crime_camera=0x7f030003;
-        public static final int list_item_crime=0x7f030004;
-        public static final int listfragment_no_crime=0x7f030005;
+        public static final int activity_masterdetail=0x7f030007;
+        public static final int activity_twopane=0x7f030001;
+        public static final int dialog_date=0x7f030002;
+        public static final int fragment_crime=0x7f030003;
+        public static final int fragment_crime_camera=0x7f030004;
+        public static final int list_item_crime=0x7f030005;
+        public static final int listfragment_no_crime=0x7f030006;
     }
     public static final class menu {
         public static final int crime_list_context=0x7f070000;
@@ -47,7 +53,15 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f050000;
         public static final int crime_details_label=0x7f050003;
+        public static final int crime_report=0x7f050010;
+        public static final int crime_report_nosuspect=0x7f050014;
+        public static final int crime_report_solved=0x7f050011;
+        public static final int crime_report_subject=0x7f050015;
+        public static final int crime_report_suspect=0x7f050013;
+        public static final int crime_report_text=0x7f05000f;
+        public static final int crime_report_unsolved=0x7f050012;
         public static final int crime_solved_label=0x7f050004;
+        public static final int crime_suspect_text=0x7f05000e;
         public static final int crime_title_hint=0x7f050001;
         public static final int crime_title_label=0x7f050002;
         public static final int crimes_title=0x7f050005;
@@ -56,6 +70,7 @@ public final class R {
         public static final int hide_subtitle=0x7f050009;
         public static final int new_crime=0x7f050007;
         public static final int no_crimes=0x7f05000c;
+        public static final int send_report=0x7f050016;
         public static final int show_subtitle=0x7f050008;
         public static final int subtitle=0x7f05000a;
         public static final int take_snap=0x7f05000d;
